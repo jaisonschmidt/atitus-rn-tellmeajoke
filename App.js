@@ -1,10 +1,31 @@
+import { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
+  const getJoke = () => {
+    console.log('buscar piada na api');
+  }
+
+  /**
+   * Como rodar um código quando a app inicializa (onLoad)
+   * Utilizando um Hook chamado useEffect
+   */
+  useEffect(() => {
+    console.log('Carregou a aplicação!');
+    /**
+     * Acessar a api de piadas e mostrar uma piada na tela
+     */
+    getJoke();
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text style={{marginBottom: 20}}>
+        Área onde vai aparecer a piadola
+      </Text>
+
+      <Button title="Carregar nova piada" onPress={() => getJoke()} />
       <StatusBar style="auto" />
     </View>
   );
