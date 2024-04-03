@@ -1,10 +1,22 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
-  const getJoke = () => {
-    console.log('buscar piada na api');
+  const [joke, setJoke] = useState("Carregando piada...");
+
+  /**
+   * Transformar a função getJoke em uma função assíncrona (async / await)
+   */
+  const getJoke = async () => {
+    // criando uma promise que vai acessar a API chucknorris
+    const response = await fetch('https://api.chucknorris.io/jokes/random');
+   
+    // convertemos o retorno da api em JSON para usar em nossa app
+    const data = await response.json();
+    
+    // atualizamos o estado da piada com o valor retornado da api
+    setJoke(data.value);
   }
 
   /**
@@ -22,7 +34,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={{marginBottom: 20}}>
-        Área onde vai aparecer a piadola
+        {joke}
       </Text>
 
       <Button title="Carregar nova piada" onPress={() => getJoke()} />
