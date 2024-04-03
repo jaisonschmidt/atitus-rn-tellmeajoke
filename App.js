@@ -2,6 +2,13 @@ import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
+/**
+ * estado de componente (useState)
+ * ciclo de vida de componentes (useEffect)
+ * promises com async / await
+ * fetch API
+ */
+
 export default function App() {
   const [joke, setJoke] = useState("Carregando piada...");
 
