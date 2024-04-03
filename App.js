@@ -7,6 +7,7 @@ import { Button, StyleSheet, Text, View } from 'react-native';
  * ciclo de vida de componentes (useEffect)
  * promises com async / await
  * fetch API
+ * eventos da aplicação (onPress)
  */
 
 export default function App() {
