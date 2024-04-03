@@ -9,14 +9,18 @@ export default function App() {
    * Transformar a função getJoke em uma função assíncrona (async / await)
    */
   const getJoke = async () => {
-    // criando uma promise que vai acessar a API chucknorris
-    const response = await fetch('https://api.chucknorris.io/jokes/random');
-   
-    // convertemos o retorno da api em JSON para usar em nossa app
-    const data = await response.json();
+    try {
+      // criando uma promise que vai acessar a API chucknorris
+      const response = await fetch('https://api.chucknorris.io/jokes/random');
     
-    // atualizamos o estado da piada com o valor retornado da api
-    setJoke(data.value);
+      // convertemos o retorno da api em JSON para usar em nossa app
+      const data = await response.json();
+      
+      // atualizamos o estado da piada com o valor retornado da api
+      setJoke(data.value);
+    } catch (error) {
+      setJoke('Verifique sua conexão de internet!');
+    }
   }
 
   /**
@@ -33,7 +37,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={{marginBottom: 20}}>
+      <Text style={{margin: 20, padding: 20, backgroundColor: '#f5c242'}}>
         {joke}
       </Text>
 
